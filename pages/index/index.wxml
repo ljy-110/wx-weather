@@ -1,0 +1,48 @@
+<wxs src="../../utils/mytools.wxs" module="tools" />
+
+<view class="container">
+  <view class="city mn" bindtap="chooseCity">
+    {{basic.location}}
+    <image src="../../img/xiala.png" class="xiala"></image>
+  </view>
+  <view class="now_tmp mn">{{now.tmp}}<span class="now_tmp_du mn">℃</span></view>
+  <view class="max_min mn">{{forecast[0].tmp_max}}℃ / {{forecast[0].tmp_min}}℃</view>
+  <view class="word mn">
+    <text space decode="{{true}}">{{now.cond_txt}}&emsp;{{lifestyle[0].brf}}</text>
+  </view>
+</view>
+
+<view class="update_today mn">
+  <view>和风天气</view>
+  <view>上次更新时间：{{tools.subTime(update.loc)}}</view>
+</view>
+
+<scroll-view scroll-x>
+  <view class="hourly mn">
+    <view wx:for="{{hourly}}" wx:key="time" class="each_hour">
+      <view>{{tools.subTime(item.time)}}</view>
+      <!-- <view class="iconfont {{tools.icon(item.cond_code)}}"></view> -->
+      <view><image src="/cond-icon/{{item.cond_code}}.png"></image></view>
+      <view>{{item.tmp}}℃</view>
+    </view>
+  </view>
+</scroll-view>
+
+<view wx:for="{{forecast}}" wx:key="date" class="daily mn">
+  <view>{{tools.formatDate(item.date)}}</view>
+  <view><image src="/cond-icon/{{item.cond_code_d}}.png"></image></view>
+  <view>{{item.tmp_max}}℃ / {{item.tmp_min}}℃</view>
+</view>
+
+
+<view class="life_word">生活指数</view>
+<view class="lifestyle">
+  <view wx:for="{{lifestyle}}" wx:key="type" class="lifestyle_son" bindtap="showLifetyle" data-message="{{item.txt}}" data-title="{{tools.lifeStyle(item.type)}}">
+    <view class="type">
+      {{tools.lifeStyle(item.type)}}
+    </view>
+    <view class="brf">
+      {{item.brf}}
+    </view>
+</view>
+</view>

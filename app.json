@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#87ceeb",
+    "navigationBarTitleText": "我的天气",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" 
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

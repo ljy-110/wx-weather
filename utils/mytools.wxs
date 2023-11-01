@@ -1,0 +1,63 @@
+// 根据传进来的日期，截取出时间，返回
+function subTime(date){
+  date = date.substring(11);
+  return date;
+}
+
+// 写一个函数，传入天气代码，返回图标对应的class类
+function icon(weather){
+  var c ="";
+  switch(weather){
+    case '100': c ='icontianqitubiao_qingtianbai1';break;
+    case '101': c ='icontianqitubiao_zhongyu';break;
+  }
+}
+
+// 日期转换。2020-03-05 转换成3月5日星期几
+function formatDate(date){
+  var d = getDate(date);
+  var month = d.getMonth()+1; //返回时0-11
+  var riqi = d.getDate();
+  var day = d.getDay();  //返回是0-6
+  switch(day){
+    case 0: day="日";break;
+    case 1: day="一";break;
+    case 2: day="二";break;
+    case 3: day="三";break;
+    case 4: day="四";break;
+    case 5: day="五";break;
+    case 6: day="六";break;
+  }
+  var str = month+"月"+riqi+"日"+"星期"+day;
+  return str;
+}
+
+function lifeStyle(type){
+  switch(type){
+    case 'comf':type='舒适度指数';break;
+    case 'cw':type='洗车指数';break;
+    case 'drsg':type='穿衣指数';break;
+    case 'flu':type='感冒指数';break;
+    case 'sport':type='运动指数';break;
+    case 'trav':type='旅游指数';break;
+    case 'uv':type='紫外线指数';break;
+    case 'air':type='空气指数';break;
+    case 'ac':type='空调指数';break;
+    case 'ag':type='过敏指数';break;
+    case 'gl':type='太阳镜指数';break;
+    case 'mu':type='化妆指数';break;
+    case 'airc':type='晾晒指数';break;
+    case 'ptfc':type='交通指数';break;
+    case 'fsh':type='钓鱼指数';break;
+    case 'spi':type='防晒指数';break;
+  }
+  return type;
+}
+
+// 把函数暴露出去
+module.exports={
+  subTime: subTime,
+  icon:icon,
+  formatDate: formatDate,
+  lifeStyle: lifeStyle
+}
